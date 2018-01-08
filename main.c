@@ -10,69 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "filler.h"
 
 int			main(int argc, char **argv)
 {
-	char	*line;
-	int		fd;
-	char	**split;
-	int		x;
-	int		y;
-	char	**map;
-	int		i;
-	int		j;
-	int		z;
-
+	t_main		var;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
-	fd = open("map.txt", O_RDONLY);
-	while (get_next_line(fd, &line))
+	var.i = 0;
+	var.j = 0;
+	get_size(&var);
+	alloc_mem(&var);
+	save_map(&var);
+	
+	while (j < var.y)
 	{
-		if (line[0] != '#')
+		i = 0;
+		while (i < var.x)
 		{
-			//printf("%s\n", line);
-		}
-		if (ft_strstr(line, "Plateau"))
-		{
-			split = ft_strsplit(line, ' ');
-			x = atoi(split[2]);
-			y = atoi(split[1]);
-		}
-		
-	}
-	close(fd);
-
-	if (!(map = (char**)malloc(sizeof(char*) * y + 1)))
-		return (0);
-	while (i < x)
-	{
-		if (!(map[i] = (char*)malloc(sizeof(char) * y +  1)))
-			return (0);
-		i++;
-	}
-
-	fd = open("map.txt", O_RDONLY);
-	while (get_next_line(fd, &line))
-	{
-		if (ft_strchr(line, '.') && !ft_strchr(line, '#'))
-		{
-			z = 0;
-			
-			while (z < x + 3) // this will not work with big maps (Needs a fix)
+			//if (var.map[j][i] == 'O')
 			{
-				if (!ft_isdigit(line[z]))
-				{
-				 printf("%c", line[z]);
-				}
-				 z++;
+				printf("%c", var.map[j][i]);
 			}
-			printf("\n");
+			i++;
 		}
+		printf("\n");
+		j++;
 	}
 
+	j = 0;
+	while (j < var.l)
+	{
+		i = 0;
+		while (i < var.k)
+		{
+			printf("%c", var.piece[j][i]);
+			i++;
+		}
+		printf("\n");
+		j++;
+	}
 	return (0);
 }
