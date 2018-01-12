@@ -6,52 +6,54 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:33:19 by mmpofu            #+#    #+#             */
-/*   Updated: 2017/12/15 09:52:17 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/11 18:23:27 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int			main(int argc, char **argv)
+int			main(void)
 {
 	t_main		var;
 	int			i;
 	int			j;
+	int			x;
+	int			y;
+	int			s;
+	//char		*place;
 
+	x = 0;
+	y = 0;
 	i = 0;
 	j = 0;
-	var.i = 0;
-	var.j = 0;
-	get_size(&var);
-	alloc_mem(&var);
-	save_map(&var);
-	
-	while (j < var.y)
+	s = 0;
+//	while (s < 10)
 	{
-		i = 0;
-		while (i < var.x)
+		get_size(&var);
+		alloc_mem(&var);
+		save_map(&var);
+		save_piece(&var);
+		get_pcor(&var);
+		search_valid(var);
+//		printf("%d %d\n", var.i, var.j);
+	/*	while (y < var.y)
 		{
-			//if (var.map[j][i] == 'O')
+			x = 0;
+			while (x < var.x)
 			{
-				printf("%c", var.map[j][i]);
+				if (var.map[y][x] == 'O' && var.map[y][x + 1] == '.')
+				{
+				//	printf("%d %d\n", var.i, var.j);
+					place = ft_strjoin(ft_strcat(ft_itoa(y - var.i), " "), 
+							ft_itoa(x - var.j));
+				}
+				x++;
 			}
-			i++;
-		}
-		printf("\n");
-		j++;
-	}
-
-	j = 0;
-	while (j < var.l)
-	{
-		i = 0;
-		while (i < var.k)
-		{
-			printf("%c", var.piece[j][i]);
-			i++;
-		}
-		printf("\n");
-		j++;
+			y++;
+		}*/
+		//ft_putendl(place);
+		//printf("%s\n", place);
+//		s++;
 	}
 	return (0);
 }
