@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 13:59:28 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/12 10:34:19 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/16 11:53:05 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef	struct		s_valid
 
 typedef struct      s_main
 {
+	t_valid				*head;
 	char				**new_map;
 	char				*line;
 	int					fd;
@@ -52,6 +53,7 @@ int                     alloc_mem(t_main *var);
 int                     save_map(t_main *var);
 int						save_piece(t_main *var);
 int						get_pcor(t_main *var);
-int						search_valid(t_main var);
+int						search_valid(t_main *var);
+int						add_moves(t_valid **head, int y, int x);
 
 #endif
