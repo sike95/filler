@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/16 10:53:20 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/16 11:23:29 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/25 18:46:39 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ int		add_moves(t_valid **head, int y, int x)
 	temp = (t_valid*)malloc(sizeof(t_valid));
 	temp->y = y;
 	temp->x = x;
+	temp->next = (*head);
+	(*head) = temp;
+	return (0);
+}
+
+int		add_distance(t_valid **head, int n)
+{
+	t_valid		*temp;
+
+	temp =(t_valid*)malloc(sizeof(t_valid));
+	temp->n = n;
 	temp->next = (*head);
 	(*head) = temp;
 	return (0);

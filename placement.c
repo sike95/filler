@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 14:57:59 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/19 14:12:37 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/25 14:47:12 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int			p_count(t_main *var)
         x = 0;
         while (x < var->x)
         {
-            if (var->new_map[y][x] == 'O')
+            if (var->new_map[y][x] == var->player)
             {
                 var->my_p++;
             }
-            if (var->new_map[y][x] == 'X')
+            if (var->new_map[y][x] == var->enemy)
             {
                 var->enemy_p++;
                 //printf("%d\n", var->enemy_p);
@@ -64,11 +64,11 @@ int			p_count1(t_main *var)
         x = 0;
         while (x < var->x)
         {
-            if (var->new_map[y][x] == 'O')
+            if (var->new_map[y][x] == var->player)
             {
                 var->my_p1++;
             }
-            if (var->new_map[y][x] == 'X')
+            if (var->new_map[y][x] == var->enemy)
             {
                 var->enemy_p1++;
                 //printf("%d\n", var->enemy_p);
@@ -89,14 +89,12 @@ int			anew_map(t_main *var)
 //	printf("x =%d %d\n", var->x, var->y);
 	if (!(var->new_map = (char**)malloc(sizeof(char*) * var->y + 1)))
 		return (0);
-	while (x < var->x)
+	while (x < var->x + 1)
 	{
 		if (!(var->new_map[x] = (char*)malloc(sizeof(char) * var->x + 1)))
 			return (0);
 		x++;
-		printf("%d\n", x);
 	}
-	printf("Hello\n");
 	return (1);
 }
 
@@ -188,10 +186,10 @@ int		search_valid(t_main *var)
 		ft_putendl("0 0");
 		exit(1);
 	}
+	calculation(var);
 	/*while (var->head != NULL)
 	{
 		printf("%s %s\n", ft_itoa(var->head->y), ft_itoa(var->head->x));
-		exit (1);
 		var->head = var->head->next;
 	}*/
 	return (0);

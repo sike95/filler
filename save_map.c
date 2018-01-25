@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 07:48:36 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/19 12:17:56 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/25 18:56:03 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ int     get_size(t_main *var)
 {
 	while (get_next_line(0, &var->line))
 	{
+		if  (ft_strstr(var->line, "[./thor]"))
+		{
+			var->split = ft_strsplit(var->line, ' ');
+			if (ft_strcmp(var->split[2], "p1") == 0)
+			{
+				var->player = 'O';
+				var->enemy = 'X';
+			}
+			 if (ft_strcmp(var->split[2], "p2") == 0)
+			 {
+                var->player = 'X';
+				var->enemy = 'O';
+			 }
+		}
 		if (ft_strstr(var->line, "Plateau"))
 		{
 			var->split = ft_strsplit(var->line, ' ');
@@ -85,7 +99,7 @@ int     save_map(t_main *var)
             var->split = ft_strsplit(var->line, ' ');
             var->k = atoi(var->split[2]);
             var->l = atoi(var->split[1]);
-            free (var->split[0]);
+           	free (var->split[0]);
 			free (var->split[1]);
 			free (var->split[2]);
 			break ;

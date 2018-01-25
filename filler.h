@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 13:59:28 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/16 11:53:05 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/25 18:46:09 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ typedef	struct		s_valid
 {
 	int						x;
 	int						y;
+	int						n;
 	struct s_valid			*next;
 }					t_valid;
 
 typedef struct      s_main
 {
 	t_valid				*head;
+	int					vx;
+	int					vy;
+	char				player;
+	char				enemy;
 	char				**new_map;
 	char				*line;
 	int					fd;
@@ -39,7 +44,6 @@ typedef struct      s_main
 	int					z;
 	int		           	k;
 	int					l;
-	char				player;
 	char	           	*save;
 	char		       	**piece;
 	int					enemy_p;
@@ -48,6 +52,8 @@ typedef struct      s_main
 	int					my_p1;	
 }                      	t_main;
 
+int						add_distance(t_valid **head, int n);
+int						calculation(t_main *var);
 int                     get_size(t_main *var);
 int                     alloc_mem(t_main *var);
 int                     save_map(t_main *var);
