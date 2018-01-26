@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 14:57:59 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/25 14:47:12 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/26 18:39:39 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,12 +186,31 @@ int		search_valid(t_main *var)
 		ft_putendl("0 0");
 		exit(1);
 	}
-	calculation(var);
-	/*while (var->head != NULL)
+	var->centerx = var->x - 1;
+    var->centery = var->y - 1;
+	var->rightx = 0;
+	var->righty = 0;
+	var->toprightx = var->x - 1;
+	var->toprighty = 0;
+	//right(var);
+	if (var->map[var->centery][var->centerx] == '.')
 	{
-		printf("%s %s\n", ft_itoa(var->head->y), ft_itoa(var->head->x));
-		var->head = var->head->next;
-	}*/
+		middle(var);
+	}
+	else if (var->map[var->righty][var->rightx] == '.')
+	{
+		right(var);
+	}
+	else if (var->map[var->toprighty][var->toprightx] == '.')
+	{
+		topright(var);		
+	}
+	else 
+	{
+		var->vy = var->head->y;
+		var->vx = var->head->x;
+	}
+
 	return (0);
 }
 

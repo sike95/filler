@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:33:19 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/25 14:55:42 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/26 17:36:43 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ int			main(void)
 //	printf("\n");
 //		get_pcor(&var);
 		search_valid(&var);
-		{
-		ft_putstr_fd(ft_itoa(var.head->y), fd);
-        ft_putstr_fd(" ", fd);
-        ft_putstr_fd(ft_itoa(var.head->x), fd);
-        ft_putstr_fd("\n", fd);
-		}
+//		{
+		ft_putstr_fd(ft_itoa(var.vy), fd);
+		ft_putstr_fd(" ", fd);
+		ft_putstr_fd(ft_itoa(var.vx), fd);
+		ft_putstr_fd("\n", fd);
+//		}
 
 //		if (var.head != NULL)
 		{
-		ft_putstr(ft_itoa(var.head->y));
+		ft_putstr(ft_itoa(var.vy));
 		ft_putstr(" ");
-		ft_putstr(ft_itoa(var.head->x));
+		ft_putstr(ft_itoa(var.vx));
 		ft_putchar('\n');
 		}
-		break ;
+//		break ;
 //		s++;
 	}
 	return (0);
