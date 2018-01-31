@@ -6,18 +6,18 @@
 #    By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 15:21:06 by mmpofu            #+#    #+#              #
-#    Updated: 2018/01/25 14:56:51 by mmpofu           ###   ########.fr        #
+#    Updated: 2018/01/31 13:28:16 by mmpofu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = thor
+NAME = filler
 
 SRCS = main.c save_map.c placement.c\
-	   save_valid.c ai.c\
+	   save_valid.c ai.c get_resources.c save_map_re.c\
 
 LIB = -L libft -lft
 
-FLAGS = # -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 OBJ = $(SRCS:.c=.o)
 

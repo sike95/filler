@@ -6,7 +6,7 @@
 /*   By: mmpofu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 20:35:45 by mmpofu            #+#    #+#             */
-/*   Updated: 2018/01/20 11:16:44 by mmpofu           ###   ########.fr       */
+/*   Updated: 2018/01/31 13:37:08 by mmpofu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ int		read_from_fd(t_gnl *var, int fd, char **line)
 			*line = ft_strjoin(var->temp, ft_strsub(var->buff, 0,
 						ft_strlen(var->buff) - ft_strlen(var->save)));
 			var->save++;
-			//free(var->temp);
 			return (1);
 		}
 		var->temp = *line;
 		*line = ft_strjoin(var->temp, var->buff);
-		//free(var->temp);
 	}
 	if (var->ret < 0)
 		return (var->ret);
@@ -49,14 +47,12 @@ int		get_next_line(const int fd, char **line)
 	{
 		var.temp = *line;
 		*line = ft_strjoin(var.temp, var.save);
-		//free(var.temp);
 		if (ft_strchr(*line, '\n'))
 		{
 			var.save = ft_strdup(ft_strchr(*line, '\n'));
 			var.temp = *line;
 			*line = ft_strsub(var.temp, 0, ft_strlen(var.temp)
 					- ft_strlen(var.save));
-			//free(var.temp);
 			var.save++;
 			return (1);
 		}
